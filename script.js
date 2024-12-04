@@ -38,15 +38,18 @@
     const updatePassword = (website) => {
         let data = localStorage.getItem("passwords");
         let arr = JSON.parse(data);
-        let updatedPassword = prompt("Enter new password:");
+      // Prompt for new username and password
+    let updatedUsername = prompt("Enter new username:");
+    let updatedPassword = prompt("Enter new password:");
 
-        if (updatedPassword) {
-            for (let i = 0; i < arr.length; i++) {
-                if (arr[i].website === website) {
-                    arr[i].password = updatedPassword;
-                    break;
-                }
+    if (updatedUsername && updatedPassword) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].website === website) {
+                arr[i].username = updatedUsername;
+                arr[i].password = updatedPassword;
+                break;
             }
+        }
 
             localStorage.setItem("passwords", JSON.stringify(arr));
             alert(`Password for ${website} updated successfully`);
